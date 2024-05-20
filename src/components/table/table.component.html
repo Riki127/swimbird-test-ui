@@ -1,0 +1,27 @@
+<main>
+    <div class="container">
+        <h1>User Balance</h1>
+    </div>
+    <button class="load-button" (click)="loadData()">Load data</button>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Account ID</th>
+                    <th>Bank</th>
+                    <th (click)="onClickBalance()">Balance {{sortIcon}}</th>
+                    <th>Currency</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let userBalance of data;">
+                    <td>{{userBalance.accountId}}</td>
+                    <td>{{userBalance.bank}}</td>
+                    <td>{{userBalance.balance}}</td>
+                    <td>{{userBalance.currency}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <span class="loader" *ngIf="isLoading"></span>
+</main>

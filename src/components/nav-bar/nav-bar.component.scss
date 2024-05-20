@@ -1,0 +1,44 @@
+.nav-bar-container {
+    align-items: start;
+    justify-content: start;
+    display: flex;
+    background-color: #333;
+}
+
+img {
+    display: block;
+    height: 60px;
+    width: 60px;
+}
+
+.nav-item {
+    padding: 0.2rem;
+}
+
+.nav-item:hover {
+    background-color: gray;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        width: 100%;
+    }
+}
