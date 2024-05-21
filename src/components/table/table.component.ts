@@ -3,12 +3,12 @@ import { ApiService } from '../../services/api.service';
 import { GlobalStateService } from '../../services/state.service';
 import { UserBalance } from '../../models/user.model';
 import { Subscription } from 'rxjs';
-import { NgFor, NgIf } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [NgIf, NgFor],
+  imports: [NgIf, NgFor, NgClass],
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss'
 })
@@ -17,7 +17,7 @@ export class TableComponent {
 
   data: UserBalance[] = [];
   sortOrder: string = '';
-  sortIcon: string = '-';
+  sortIcon: string = '';
 
   isLoading: boolean = false;
 
@@ -42,7 +42,7 @@ export class TableComponent {
   resetTable() {
     this.isLoading = true;
     this.data = [];
-    this.sortIcon = '-'
+    this.sortIcon = ''
     this.globalState.resetState()
   }
 
@@ -57,7 +57,6 @@ export class TableComponent {
   }
 
   onClickBalance() {
-    console.log(this.sortOrder)
     if (this.sortOrder === 'asc' || this.sortOrder === '') {
       this.sortDescending()
       this.sortOrder = 'des'
@@ -73,8 +72,9 @@ export class TableComponent {
   }
 
   handleSortIcon() {
-    if (this.sortOrder === 'asc') this.sortIcon = '▲'
-    if (this.sortOrder === 'des') this.sortIcon = '▼'
+    if (this.sortOrder === 'asc') this.sortIcon = 'fa-solid fa-sort-up'
+    else if (this.sortOrder === 'des') this.sortIcon = 'fa-solid fa-sort-down'
+    else if (this.sortIcon === '') this.sortIcon = 'fa-solid fa-sort'
   }
 
   sortAscending() {

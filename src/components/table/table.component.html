@@ -9,7 +9,9 @@
                 <tr>
                     <th>Account ID</th>
                     <th>Bank</th>
-                    <th (click)="onClickBalance()" style="cursor: pointer;">Balance {{sortIcon}}</th>
+                    <th (click)="onClickBalance()" style="cursor: pointer;">Balance
+                        <i [ngClass]="sortIcon"></i>
+                    </th>
                     <th>Currency</th>
                 </tr>
             </thead>
